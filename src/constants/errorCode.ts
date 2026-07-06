@@ -1,0 +1,6 @@
+export const ErrorCode = {
+  VALIDATION_ERROR: 1001,
+  TODO_NOT_FOUND: 1002,
+  OWNER_INVALID: 1003,
+  INTERNAL_SERVER_ERROR: 9999
+} as const
