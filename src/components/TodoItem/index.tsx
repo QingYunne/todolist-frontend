@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Card from '@mui/material/Card'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
@@ -17,7 +17,7 @@ interface TodoItemProps {
   todo: Todo
   onToggle: (todo: Todo) => void
   onEdit: (todo: Todo) => void
-  onDelete: (id: string) => void
+  onDelete: (id: number) => void
 }
 
 export default function TodoItem({
@@ -35,7 +35,7 @@ export default function TodoItem({
       timerRef.current = setTimeout(() => setConfirming(false), 3000)
       return
     }
-    clearTimeout(timerRef.current)
+    if (timerRef.current) clearTimeout(timerRef.current)   
     setConfirming(false)
     onDelete(todo.id)
   }

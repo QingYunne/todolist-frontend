@@ -8,14 +8,14 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { ErrorCode } from '~/constants/errorCode'
 import { Validation } from '~/constants/validation'
-import type { Todo, TodoRequest } from '~/types/todo'
+import type { Todo, TodoCreateRequest } from '~/types/todo'
 import { toFieldErrors } from '~/utils/format'
 
 interface TodoDialogProps {
   open: boolean
   todo: Todo | null
   onClose: () => void
-  onSave: (body: TodoRequest) => Promise<void>
+  onSave: (body: TodoCreateRequest) => Promise<void>
 }
 
 export default function TodoDialog({
@@ -64,7 +64,7 @@ export default function TodoDialog({
     try {
       await onSave({
         title: title.trim(),
-        description: description.trim() || null
+        description: description.trim() || undefined
       })
     } catch (error: any) {
       if (error.code === ErrorCode.VALIDATION_ERROR) {

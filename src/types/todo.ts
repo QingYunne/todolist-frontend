@@ -7,11 +7,13 @@ export interface Todo {
     updatedAt: string
 }
 
-export interface TodoRequest {
+export interface TodoCreateRequest {
     title: string,
     description?: string,
-    completed: boolean
 }
+
+export type TodoUpdateRequest = Partial<TodoCreateRequest & { completed: boolean }>
+
 
 export type TodoSortBy =
     | "createdAt"

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { todoApi } from '~/api/todo.api'
 
-import type { TodoRequest, TodoSearchParams } from '~/types/todo'
+import type { TodoCreateRequest, TodoSearchParams, TodoUpdateRequest } from '~/types/todo'
 
 export function useTodos(params: TodoSearchParams) {
   return useQuery({
@@ -16,7 +16,7 @@ export function useCreateTodo() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (body: TodoRequest) => todoApi.createTodo(body),
+    mutationFn: (body: TodoCreateRequest) => todoApi.createTodo(body),
 
     onSuccess: () => {
       toast.success('Todo created successfully!')
@@ -31,7 +31,7 @@ export function useUpdateTodo() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ id, body }: { id: number; body: TodoRequest }) =>
+    mutationFn: ({ id, body }: { id: number; body: TodoUpdateRequest }) =>
       todoApi.updateTodo(id, body),
     onSuccess: () => {
       toast.success('Todo updated successfully!')

@@ -9,7 +9,6 @@ import Fab from '@mui/material/Fab'
 import Pagination from '@mui/material/Pagination'
 import Typography from '@mui/material/Typography'
 
-
 import FilterToolbar from './components/FilterToolBar'
 import EmptyState from './components/EmptyState'
 import TodoDialog from './components/TodoDialog'
@@ -20,7 +19,7 @@ import {
   useUpdateTodo,
   useDeleteTodo
 } from './hooks/useTodo'
-import type { Todo, TodoRequest, TodoSearchParams } from './types/todo'
+import type { Todo, TodoCreateRequest, TodoSearchParams } from './types/todo'
 
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -55,7 +54,7 @@ function App() {
     setDialogOpen(true)
   }
 
-  const handleSaveTodo = async (body: TodoRequest) => {
+  const handleSaveTodo = async (body: TodoCreateRequest) => {
     if (editingTodo) {
       await updateMutation.mutateAsync({
         id: editingTodo.id,
@@ -84,7 +83,6 @@ function App() {
   const completedTaskNumber = () => {
     return data?.items?.filter((t: Todo): boolean => t.completed).length ?? 0
   }
-
 
   const completedPercent = () => {
     return data?.items.length
@@ -119,14 +117,13 @@ function App() {
             />
           ))}
 
-        {!isLoading && error && <EmptyState filtered={false} />}
-
-        {!isLoading && !error && data.items.length === 0 && (
+        {!isLoading && !error && data && data.items.length === 0 && (
           <EmptyState filtered={!!(filters.keyword || filters.completed)} />
         )}
 
         {!isLoading &&
           !error &&
+          data &&
           data.items.map((todo) => (
             <TodoItem
               key={todo.id}
@@ -138,7 +135,7 @@ function App() {
           ))}
       </Stack>
 
-      {!isLoading && data.totalElements > 0 && (
+      {!isLoading && data && data.totalElements > 0 && (
         <Box
           sx={{
             display: 'flex',
@@ -150,14 +147,13 @@ function App() {
         >
           <Pagination
             page={page + 1}
-            count={Math.ceil(data.page / size)}
+            count={data.totalPages}
             onChange={(_, p) => setPage(p - 1)}
             shape="rounded"
             color="primary"
           />
           <Typography variant="caption" color="text.secondary">
-            Page {page + 1} / {Math.ceil(data.totalElements / size)} •{' '}
-            {data.totalElements} tasks
+            Page {page + 1} / {data.totalPages} • {data.totalElements} tasks
           </Typography>
         </Box>
       )}
