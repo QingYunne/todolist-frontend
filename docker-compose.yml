@@ -25,6 +25,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/todo_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
