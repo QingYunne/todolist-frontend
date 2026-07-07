@@ -1,21 +1,19 @@
-📝 TodoList Frontend
+# 📝 TodoList Frontend
 
+**Backend Repository:** [github.com/QingYunne/todolist-backend](https://github.com/QingYunne/todolist-backend)
 
-Backend Repository: github.com/QingYunne/todolist-backend
+---
 
+## 🚀 Quick Start
 
-🚀 Quick Start
+### Prerequisites
+- Docker Desktop 3.6+
+- Git
 
-Prerequisites
+### Run the entire stack
 
-
-Docker Desktop 3.6+
-Git
-
-
-Run the entire stack
-
-bash# 1. Clone this repo
+```bash
+# 1. Clone this repo
 git clone https://github.com/QingYunne/todolist-frontend.git
 cd todolist-frontend
 
@@ -25,50 +23,60 @@ docker-compose up -d
 # 3. Open in browser
 # Frontend: http://localhost:3000
 # Backend API: http://localhost:1122
+```
 
-Check status
+### Check status
 
-bash# View running containers
+```bash
+# View running containers
 docker-compose ps
 
 # View logs
 docker-compose logs -f
+```
 
+---
 
-🧹 Cleanup
+## 🧹 Cleanup
 
-Linux/Mac:
-
-bashchmod +x cleanup.sh
+**Linux/Mac:**
+```bash
+chmod +x cleanup.sh
 ./cleanup.sh
+```
 
-Windows (PowerShell):
+**Windows (PowerShell):**
+```powershell
+.\cleanup.bat
+```
 
-powershell.\cleanup.bat
+---
 
+## 🔗 Related Repositories
 
-🔗 Related Repositories
+- **Backend (Spring Boot):** [todolist-backend](https://github.com/QingYunne/todolist-backend)
+- **Frontend (React + Vite):** [todolist-frontend](https://github.com/QingYunne/todolist-frontend)
 
+---
 
-Backend (Spring Boot): todolist-backend
-Frontend (React + Vite): todolist-frontend
+## 📚 Tech Stack
 
+- React.js + Vite
+- TanStack Query
+- Material-UI
+- Nginx
+- Docker
 
+---
 
-📚 Tech Stack
+## 🧪 Test the app
 
+1. Open http://localhost:3000
+2. Create, edit, delete todos
+3. Refresh page to verify persistence
 
-React.js + Vite
-TanStack Query
-Material-UI
-Nginx
-Docker
+---
 
+## 📞 Backend Issues?
 
-
-🧪 Test the app
-
-
-Open http://localhost:3000
-Create, edit, delete todos
-Refresh page to verify persistence
+Check the backend repository for backend-specific setup and troubleshooting: [todolist-backend](https://github.com/QingYunne/todolist-backend)
