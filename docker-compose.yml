@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
@@ -21,7 +19,7 @@ services:
       - todolist-network
 
   backend:
-    image: ghcr.io/QingYunne/todolist-backend:latest
+    image: ghcr.io/qingyunne/todolist-backend:latest
     container_name: todolist-backend
     depends_on:
       postgres:
@@ -37,7 +35,7 @@ services:
       - todolist-network
 
   frontend:
-    image: ghcr.io/QingYunne/todolist-frontend:latest
+    image: ghcr.io/qingyunne/todolist-frontend:latest
     container_name: todolist-frontend
     depends_on:
       - backend

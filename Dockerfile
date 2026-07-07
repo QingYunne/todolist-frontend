@@ -2,6 +2,10 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+ARG VITE_APP_URL
+ENV VITE_APP_URL=$VITE_APP_URL
+
+
 COPY package*.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
