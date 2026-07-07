@@ -41,13 +41,13 @@ docker-compose logs -f
 
 **Linux/Mac:**
 ```bash
-chmod +x cleanup.sh
-./cleanup.sh
+chmod +x ./scripts/cleanup.sh
+./scripts/cleanup.sh
 ```
 
-**Windows (PowerShell):**
-```powershell
-.\cleanup.bat
+**Windows:**
+```cmd
+scripts\cleanup.bat
 ```
 
 ---
